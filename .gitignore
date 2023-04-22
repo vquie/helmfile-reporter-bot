@@ -1,0 +1,8 @@
+.local.env
+testfiles/
+
+# mega-linter reports
+megalinter-reports/
+**/megalinter-reports/
+
+helmfile-report
