@@ -25,10 +25,19 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
+      - name: Dotenv Action
+        id: dotenv
+        uses: falti/dotenv-action@v1.0.4
+
       - name: Build and push
         uses: docker/build-push-action@v4
+        env:
+          ACTIONS_RUNTIME_TOKEN: ''
         with:
           context: .
           file: ./Dockerfile
+          build-args: VERSION=${{ steps.dotenv.outputs.version }}
           push: true
-          tags: vqui/helmfile-reporter-bot:latest
+          tags: |
+            ${{ steps.dotenv.outputs.repo }}:latest
+            ${{ steps.dotenv.outputs.repo }}:${{ steps.dotenv.outputs.version }}
