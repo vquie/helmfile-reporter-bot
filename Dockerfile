@@ -37,4 +37,4 @@ RUN chmod -R 0755 /opt/helmfile-reporter-bot/*
 
 VOLUME ["/opt/helmfile-reporter-bot/"]
 
-CMD ["/opt/helmfile-reporter-bot/helmfile-reporter-bot.sh"]
+CMD ["/opt/helmfile-reporter-bot/helmfile-reporter-bot.py"]
