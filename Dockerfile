@@ -1,4 +1,4 @@
-FROM debian:12.1-slim
+FROM debian:12.2-slim
 
 ARG VERSION
 ENV VERSION ${VERSION}
