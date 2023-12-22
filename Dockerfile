@@ -11,10 +11,11 @@ ARG _AWSCLI_VERSION="1.27.*"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git=${_GIT_VERSION} \
-    wget \
-    ca-certificates \
-	python3 \
-	python3-pip && \
+    wget=* \
+    ca-certificates=* \
+	python3=* \
+	python3-pip=* && \
+    python3-dotenv=* && \
     pip3 install --no-cache-dir awscli==${_AWSCLI_VERSION} && \
     apt-get remove --purge -y python3-pip && \
     apt-get autoremove -y && \
