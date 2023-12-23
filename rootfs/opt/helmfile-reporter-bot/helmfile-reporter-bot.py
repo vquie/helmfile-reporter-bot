@@ -28,6 +28,14 @@ class HelmfileRunner:
         if 'containerd' in open('/proc/self/cgroup').read() or os.path.exists('/.dockerenv'):
             self._dockerized = True
 
+    def init_k8s(self):
+        self._kube_config_b64 = os.getenv('KUBE_CONFIG', '')
+        if self._kube_config_b64:
+            kube_config = base64.b64decode(self._kube_config_b64).decode()
+            with open(self._kubeconfig, 'w') as f:
+                f.write(kube_config)
+            self._kube = True
+
     def init_aws(self):
         self._aws_access_key_id = os.getenv('AWS_ACCESS_KEY_ID', '')
         self._aws_secret_access_key = os.getenv('AWS_SECRET_ACCESS_KEY', '')

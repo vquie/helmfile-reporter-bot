@@ -5,7 +5,7 @@ ENV VERSION ${VERSION}
 
 ARG TARGETARCH
 
-ARG _HELMFILE_VERSION="0.152.0"
+ARG _HELMFILE_VERSION="0.154.0"
 ARG _GIT_VERSION="*"
 ARG _AWSCLI_VERSION="1.27.*"
 
@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     wget=* \
     ca-certificates=* \
 	python3=* \
-	python3-pip=* && \
+	python3-pip=* \
     python3-dotenv=* && \
     pip3 install --no-cache-dir awscli==${_AWSCLI_VERSION} && \
     apt-get remove --purge -y python3-pip && \
